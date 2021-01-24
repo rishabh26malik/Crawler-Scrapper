@@ -1,0 +1,150 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLR - Search</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- <link rel="stylesheet" href="index1.css"> -->
+</head>
+
+<body>
+    <div class="container border my-4">
+        <h1 class="text-center">SLR - Search Page</h1>
+    </div>
+    <div class="status mx-auto text-center"></div>
+    <div class="card" style="margin-left: 55px; margin-right: 55px;">
+        <div class="card-body">
+            <div class="MasterContainer">
+                <!-- <label for="searchArea1" class="is-accessible">Select search in area</label> -->
+                <div id=searchContainer1>
+                    <select id="searchSelector1" name="field1" style="height: 30px;width: 252px;"
+                        class="searchContainer">
+                        <option value="AllField" selected="selected">Anywhere</option>
+                        <option value="Title">Title</option>
+                        <option value="ContribAuthor">Author</option>
+                        <option value="Abstract">Abstract</option>
+                        <option value="Fulltext">Full text</option>
+                        <option value="Affiliation">Author Affiliation</option>
+                        <option value="Keyword">Author Keyword</option>
+                        <option value="ConferenceLocation">Conference Location</option>
+                        <option value="ConferenceSponsor">Conference Sponsor</option>
+                        <option value="Contrib">Name</option>
+                        <option value="PubIdSortField">ISBN/ISSN</option>
+                        <option value="DOI">DOI</option>
+                    </select>
+                    <label for="text1" class="is-accessible">Search Term</label>
+                    <input id="text1" type="text" placeholder="Enter Search term" value="" name="text1">
+                    <!-- <select id="booleanid1" name="" style="height: 30px;width: 68px; visibility: hidden;" >
+                        <option value="AND">AND</option>
+                        <option value="OR">OR</option>
+                        <option value="NOT">NOT</option>
+                        
+                    </select> -->
+                    <a title="Add search field" aria-label="Add search field" role="button" class="add-ctrl-field"
+                        tabindex="0" id="addField">
+                        <i class="fa fa-plus-circle" style="font-size:24px;color:black"></i>
+                    </a>
+                    <a title="Remove search field" aria-label="Remove search field" role="button"
+                        class="remove-ctrl-field" tabindex="0" id="removeField">
+                        <i class="fa fa-trash" style="font-size:24px;color:black;"></i>
+                    </a>
+                    &nbsp;&nbsp;
+                    <label class="is-accessible">From Date</label>
+                    <input type="date" id="fromDate"  min="1908-01-01">
+                    <label class="is-accessible">To Date</label>
+                    <input type="date" id="toDate"  min="1908-01-01">
+                </div>
+            </div>
+        </div>
+        <div class="card" style="margin-left: 20px;margin-right: 20px;margin-bottom: 25px;">
+            <div class="card-title p-4">
+                <h4>Search Query</h4>
+            </div>
+            <div class="card-body">
+                <!-- <P>Edit Search Query</P>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <textarea class="form-control" id="searchQuery" type="text" row="3" placeholder=""
+                                value=""></textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <input class="btn btn-primary" type="reset" value="Reset" id="resetButton">
+                    </div>
+                </div> -->
+                <P>ACM Query</P>
+                <div class="row text-center">
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <textarea class="form-control" disabled id="searchQuery1" type="text" row="10" placeholder=""
+                                value=""></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <p>IEEEXplore Query</p>
+                <div class="row">                    
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <textarea class="form-control" disabled id="ieeeQuery" type="text" row="10" placeholder=""
+                                value=""></textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                    </div>
+                </div>
+
+                <p>Springer Query</p>
+                <div class="row">                    
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <textarea class="form-control" disabled id="springerQuery" type="text" row="10" placeholder=""
+                                value=""></textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                    </div>
+                </div>
+
+                <p>ScienceDirect Query</p>
+                <div class="row">                    
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <textarea class="form-control" disabled id="scienceDirectQuery" type="text" row="10" placeholder=""
+                                value=""></textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <input class="btn btn-primary" type="reset" value="Search" id="searchButton">
+                </div>
+
+            </div>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+        <script>
+            var csrf='{{ csrf_token }}';
+        </script>
+        <script type="module" src="{% static 'index1.js' %}"></script>
+</body>
+
+</html>
